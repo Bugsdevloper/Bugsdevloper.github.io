@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +14,12 @@
             align-items: center;
             flex-direction: column;
             height: 100vh;
-            background-color: #1a1a1a; /* Dark background color */
-            font-family: 'Caveat', cursive; /* Stylish font */
-            color: #fff; /* White text color */
+            background-color: #1a1a1a;
+            /* Dark background color */
+            font-family: 'Caveat', cursive;
+            /* Stylish font */
+            color: #fff;
+            /* White text color */
         }
 
         .birthday-card {
@@ -26,8 +30,10 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background-color: #fff;
             margin-top: 20px;
-            width: 400px; /* Adjust the width as needed */
-            height: 300px; /* Adjust the height as needed */
+            width: 400px;
+            /* Adjust the width as needed */
+            height: 300px;
+            /* Adjust the height as needed */
         }
 
         .message-container {
@@ -56,14 +62,16 @@
         /* Styling for the audio controls */
         audio {
             margin-top: 20px;
-            display: none; /* Hide the audio controls */
+            display: none;
+            /* Hide the audio controls */
         }
     </style>
     <title>Birthday Message</title>
 </head>
+
 <body>
     <p style="text-align: center; color: #fff; font-size: 18px;">Click to reveal</p>
-    
+
     <div class="birthday-card" onclick="revealMessage()">
         <div class="message-container" id="messageContainer">
             <h1>Happy Birthday! kaavya!</h1>
@@ -74,8 +82,8 @@
         </div>
     </div>
 
-    <!-- Add an audio element for background music with autoplay -->
-    <audio autoplay>
+    <!-- Add an audio element for background music without autoplay -->
+    <audio id="backgroundAudio">
         <source src="birthday.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
@@ -84,7 +92,15 @@
         function revealMessage() {
             var messageContainer = document.getElementById("messageContainer");
             messageContainer.classList.add("show");
+
+            // Check if audio is not already playing
+            var audio = document.getElementById("backgroundAudio");
+            if (audio.paused) {
+                // Start playing audio
+                audio.play();
+            }
         }
     </script>
 </body>
+
 </html>
