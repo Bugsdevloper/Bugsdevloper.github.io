@@ -21,6 +21,7 @@
             color: #fff;
             /* White text color */
             overflow: hidden;
+            transition: background-color 1s ease-in-out;
         }
 
         .birthday-card {
@@ -35,6 +36,11 @@
             /* Adjust the width as needed */
             height: 300px;
             /* Adjust the height as needed */
+            transition: transform 1s ease-in-out;
+        }
+
+        .birthday-card.clicked {
+            transform: scale(1.1);
         }
 
         .message-container {
@@ -52,7 +58,8 @@
         }
 
         h1 {
-            color: #ff4500;
+            color: #e74c3c; /* Red color for kaavya text */
+            font-family: 'Arial', sans-serif; /* Change font family */
         }
 
         p {
@@ -77,6 +84,21 @@
             animation: balloonAnimation 5s infinite alternate;
         }
 
+        .balloon:nth-child(2) {
+            background-color: #FF69B4; /* Deep Pink color */
+            animation-delay: 1s; /* Delay the animation */
+        }
+
+        .balloon:nth-child(3) {
+            background-color: #00BFFF; /* Deep Sky Blue color */
+            animation-delay: 2s; /* Delay the animation */
+        }
+
+        .balloon:nth-child(4) {
+            background-color: #32CD32; /* Lime Green color */
+            animation-delay: 3s; /* Delay the animation */
+        }
+
         @keyframes balloonAnimation {
             0% {
                 transform: translateY(0);
@@ -94,18 +116,19 @@
 
     <div class="birthday-card" onclick="revealMessage()">
         <div class="message-container" id="messageContainer">
-            <h1>Happy Birthday! kaavya!</h1>
+            <h1 style="font-family: 'Comic Sans MS', cursive;">Happy Birthday! <span style="color: #e74c3c;">kaavya!</span></h1>
             <p>Wishing you a day filled with joy and laughter.</p>
             <p>May all your dreams and wishes come true!</p>
             <p>Be joyful! and Stay Always At the Top!</p>
             <p>May your journey continue to be blessed each and every day</p>
         </div>
-        <!-- Balloons -->
-        <div class="balloon" style="left: 20%;"></div>
-        <div class="balloon" style="left: 40%;"></div>
-        <div class="balloon" style="left: 60%;"></div>
-        <div class="balloon" style="left: 80%;"></div>
     </div>
+
+    <!-- Balloons -->
+    <div class="balloon" style="left: 20%;"></div>
+    <div class="balloon" style="left: 40%;"></div>
+    <div class="balloon" style="left: 60%;"></div>
+    <div class="balloon" style="left: 80%;"></div>
 
     <!-- Add an audio element for background music without autoplay -->
     <audio id="backgroundAudio">
@@ -124,6 +147,11 @@
                 // Start playing audio
                 audio.play();
             }
+
+            // Add class to trigger CSS transition
+            var birthdayCard = document.querySelector(".birthday-card");
+            birthdayCard.classList.add("clicked");
+            document.body.style.backgroundColor = "#9400D3"; /* Change body background color to violet */
         }
     </script>
 </body>
