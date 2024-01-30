@@ -1,3 +1,77 @@
-<html>
-  <h1>hello world</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #1a1a1a; /* Dark background color */
+            font-family: 'Caveat', cursive; /* Stylish font */
+            color: #fff; /* White text color */
+        }
+
+        .birthday-card {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            margin-top: 20px;
+            width: 400px; /* Adjust the width as needed */
+            height: 300px; /* Adjust the height as needed */
+        }
+
+        .message-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .message-container.show {
+            opacity: 1;
+        }
+
+        h1 {
+            color: #ff4500;
+        }
+
+        p {
+            color: #333;
+            margin: 10px 0;
+        }
+    </style>
+    <title>Birthday Message</title>
+</head>
+<body>
+    <p style="text-align: center; color: #fff; font-size: 18px;">Click to reveal</p>
+    
+    <div class="birthday-card" onclick="revealMessage()">
+        <div class="message-container" id="messageContainer">
+            <h1>Happy Birthday!</h1>
+            <p>Wishing you a day filled with joy and laughter.</p>
+            <p>May all your dreams and wishes come true!</p>
+            <p>Be joyful! and Stay Always At the Top!</p>
+            <p>May your journey continue to be blessed each and every day</p>
+        </div>
+    </div>
+
+    <script>
+        function revealMessage() {
+            var messageContainer = document.getElementById("messageContainer");
+            messageContainer.classList.add("show");
+        }
+    </script>
+</body>
 </html>
