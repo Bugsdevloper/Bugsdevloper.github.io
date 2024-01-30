@@ -51,6 +51,11 @@
             color: #333;
             margin: 10px 0;
         }
+
+        /* Styling for the audio controls */
+        audio {
+            margin-top: 20px;
+        }
     </style>
     <title>Birthday Message</title>
 </head>
@@ -66,6 +71,12 @@
             <p>May your journey continue to be blessed each and every day</p>
         </div>
     </div>
+
+    <!-- Add an audio element for background music -->
+    <audio controls autoplay loop>
+        <source src="Fly-Me-To-The_Moon.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
         function revealMessage() {
