@@ -1,4 +1,101 @@
-<html>
-<h1>Techo_savvy</h1>
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Video Player</title>
+<style>
+    /* Styles for the button */
+    .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        font-size: 24px;
+        padding: 15px 30px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: opacity 0.3s;
+    }
+    .play-button:hover {
+        opacity: 0.8;
+    }
+
+    /* Hide the video when button is visible */
+    .video-container video {
+        display: none;
+    }
+
+    /* Styles for the video container */
+    .video-container {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 aspect ratio */
+        overflow: hidden;
+        background-color: black; /* Set background color to black */
+    }
+    .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+        .video-container {
+            padding-top: 100%; /* 1:1 aspect ratio for mobile */
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="video-container" id="videoContainer">
+    <video id="videoPlayer" loop autoplay preload="auto">
+        <source src="padhai.mp4" type="video/mp4">
+        <!-- You can add additional source elements for other video formats -->
+        Your browser does not support the video tag.
+    </video>
+    <button class="play-button" onclick="playVideo()">Play Video</button>
+</div>
+
+<script>
+    function playVideo() {
+        var videoContainer = document.getElementById('videoContainer');
+        var video = document.getElementById('videoPlayer');
+        
+        // Hide the button
+        var button = document.querySelector('.play-button');
+        button.style.display = 'none';
+
+        // Show the video
+        video.style.display = 'block';
+
+        // Start playing the video with sound
+        video.play();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Resume video if autoplay is stopped
+        var video = document.getElementById('videoPlayer');
+        document.addEventListener("visibilitychange", function() {
+            if (document.visibilityState === 'visible' && video.paused) {
+                video.play();
+            }
+        });
+
+        // Mobile autoplay handling
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (isMobile) {
+            video.play(); // Autoplay on mobile
+        }
+    });
+</script>
+
+</body>
 </html>
